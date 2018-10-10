@@ -107,21 +107,21 @@ class InnerCard extends React.Component {
             counters.push({ name: 'card-power', count: card.power, fade: needsFade, shortName: 'P' });
         }
 
-        if(card.baseStrength !== card.strength) {
-            counters.push({ name: 'strength', count: card.strength, fade: needsFade, shortName: 'S' });
-        }
+        // if(card.baseStrength !== card.strength) {
+        //     counters.push({ name: 'strength', count: card.strength, fade: needsFade, shortName: 'S' });
+        // }
 
-        if(card.dupes && card.dupes.length > 0) {
-            counters.push({ name: 'dupe', count: card.dupes.length, fade: needsFade, shortName: 'D' });
-        }
+        // if(card.dupes && card.dupes.length > 0) {
+        //     counters.push({ name: 'dupe', count: card.dupes.length, fade: needsFade, shortName: 'D' });
+        // }
 
-        for(const icon of card.iconsAdded || []) {
-            counters.push({ name: 'challenge-icon-token', icon: icon, count: 0, cancel: false });
-        }
+        // for(const icon of card.iconsAdded || []) {
+        //     counters.push({ name: 'challenge-icon-token', icon: icon, count: 0, cancel: false });
+        // }
 
-        for(const icon of card.iconsRemoved || []) {
-            counters.push({ name: 'challenge-icon-token', icon: icon, count: 0, cancel: true });
-        }
+        // for(const icon of card.iconsRemoved || []) {
+        //     counters.push({ name: 'challenge-icon-token', icon: icon, count: 0, cancel: true });
+        // }
 
         for(const item of card.factionStatus || []) {
             counters.push({ name: 'faction-token', icon: item.faction, count: 0, cancel: item.status === 'lost' });
@@ -308,12 +308,46 @@ class InnerCard extends React.Component {
                         <span className='card-name'>{ this.props.card.name }</span>
                         { image }
                     </div>
+                    { this.props.source === 'play area' && this.getStats(this.props.card) }
                     { this.showCounters() ? <CardCounters counters={ this.getCountersForCard(this.props.card) } /> : null }
                 </div>
                 { this.showMenu() ? <CardMenu menu={ this.props.card.menu } onMenuItemClick={ this.onMenuItemClick } /> : null }
             </div>);
 
         return this.props.connectDragPreview(content);
+    }
+
+    getStats(card) {
+        let counters = [];
+
+        // if(card.dupes && card.dupes.length > 0) {
+        counters.push(<div key='dupes' className={ classNames('card-stat', { 'card-stat-dupes': card.dupes && card.dupes.length > 0 }) }>
+            { card.dupes && card.dupes.length > 0 ? `x${card.dupes.length}` : null }
+        </div>);
+        // }
+
+        console.log(card);
+        if(card.type === 'character' && !card.facedown) {
+            const icons = ['military', 'intrigue', 'power'];
+
+            for(let icon of icons) {
+                let iconElement = null;
+
+                if(this.props.card.iconStatus[icon] !== 'none') {
+                    iconElement = <div key={ icon } className={ classNames('card-stat card-stat-icon', 'thronesicon', `thronesicon-${icon}`) } />;
+                } else {
+                    iconElement = <div key={ icon } className={ classNames('card-stat card-stat-icon') } />;
+                }
+                counters.push(iconElement);
+            }
+
+            counters.push(<div key='strength' className={ classNames('card-stat', 'card-stat-strength', { boosted: (card.baseStrength !== card.strength) }) }>{ card.strength }</div>);
+        }
+
+        return (
+            <div className='card-stats'>
+                { counters }
+            </div>);
     }
 
     get imageUrl() {
@@ -387,6 +421,7 @@ InnerCard.propTypes = {
         factionStatus: PropTypes.array,
         iconsAdded: PropTypes.array,
         iconsRemoved: PropTypes.array,
+        iconStatus: PropTypes.object,
         inChallenge: PropTypes.bool,
         inDanger: PropTypes.bool,
         kneeled: PropTypes.bool,

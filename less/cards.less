@@ -289,6 +289,47 @@
     margin: 10px 0 0 0;
 }
 
+.card-stats {
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: @card-height;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 18px;
+  z-index: @layer-top;
+}
+
+.card-stat {
+  flex: 1;
+  // color: white;
+  // font-weight: bold;
+  font-size: 10px;
+  min-height: 1em;
+  padding: 0.25em;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+.card-stat-dupes {
+  background: @dupe-color;
+}
+
+.card-stat-strength {
+  text-align: center;
+  background: #333;
+  color: white;
+  // font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+
+  &.boosted {
+    background: @strength-color;
+  }
+}
+
 .counters {
   color: white;
   position: absolute;
