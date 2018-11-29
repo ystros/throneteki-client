@@ -321,8 +321,8 @@ class InnerCard extends React.Component {
         let counters = [];
 
         // if(card.dupes && card.dupes.length > 0) {
-        counters.push(<div key='dupes' className={ classNames('card-stat', { 'card-stat-dupes': card.dupes && card.dupes.length > 0 }) }>
-            { card.dupes && card.dupes.length > 0 ? `x${card.dupes.length}` : null }
+        counters.push(<div key='cost' className={ classNames('card-stat', 'card-stat-cost') }>
+            { card.cost }
         </div>);
         // }
 
