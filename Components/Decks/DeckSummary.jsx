@@ -115,7 +115,7 @@ class DeckSummary extends React.Component {
             <div className='deck-summary col-xs-12'>
                 { this.state.cardToShow ?
                     <div className={ classNames('hover-card', { 'horizontal': this.state.cardToShow.type === 'plot'}) }>
-                        <img className='hover-image' src={ '/img/cards/' + this.state.cardToShow.code + '.png' } />
+                        <img className='hover-image' src={ '/img/cards/11069.png' } />
                         <AltCard card={ this.state.cardToShow } />
                     </div> : null }
                 <div className='decklist'>

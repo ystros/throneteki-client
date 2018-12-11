@@ -4,7 +4,51 @@ import classNames from 'classnames';
 import { ThronesIcons } from '../../constants';
 
 class AltCard extends React.Component {
+
+    renderCharacter() {
+        let icons = [];
+
+        if(this.props.card.icons) {
+            for(let [icon, present] of Object.entries(this.props.card.icons)) {
+                if(present) {
+                    icons.push(<div className={ `challenge-icon thronesicon thronesicon-${icon} with-background` } />);
+                } else {
+                    icons.push(<div className='challenge-icon' />);
+                }
+            }
+        }
+
+        let cardText = this.props.card.text.replace(/\n/g, '<br />');
+        for(let icon of ThronesIcons) {
+            cardText = cardText.replace(new RegExp(`\\[${icon}\\]`, 'g'), `<span class='thronesicon thronesicon-${icon}'></span>`);
+        }
+
+        return (
+            <div className='card-alt-new'>
+                <div className='card-alt-name'>{ this.props.card.unique ? <span className='card-unique' /> : null } { this.props.card.name }</div>
+                <div className='card-alt-cost-and-type'>
+                    <div className='card-alt-cost'>{ this.props.card.cost }</div>
+                    <div className='card-alt-type'>{ this.props.card.type }</div>
+                </div>
+                <div className={ classNames('card-icons') }>
+                    { icons }
+                </div>
+                {/* <div className='card-strength'>{ this.props.card.strength }</div>
+                <div className={ `card-faction thronesicon thronesicon-${this.props.card.faction} with-background` } /> */}
+                <div className='card-alt-text-box'>
+                    <div className='card-alt-traits'>{ this.props.card.traits.join('. ') }{ this.props.card.traits.length > 0 ? '.' : null }</div>
+                    <div className='card-alt-text-body' dangerouslySetInnerHTML={ { __html: cardText } } />
+                    { ['attachment'].includes(this.props.card.type) && <div className='card-name'>{ this.props.card.unique ? <span className='card-unique' /> : null } { this.props.card.name }</div> }
+                </div>
+            </div>
+        );
+    }
+
     render() {
+        if(this.props.card.type === 'character') {
+            return this.renderCharacter();
+        }
+
         let icons = [];
 
         if(this.props.card.icons) {
