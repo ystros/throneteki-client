@@ -485,11 +485,13 @@
 
 .hover-card {
   position: fixed;
-  top: 60px;
-  left: 10px;
   z-index: @layer-top;
   min-width: @card-width * 4;
   min-height: @card-height * 4;
+  border-radius: 16px;
+  border: 1px solid black;
+  box-shadow: 0 0 20px 5px @brand-secondary;
+  overflow: hidden;
 
   &.horizontal {
     min-height: @card-width * 4;

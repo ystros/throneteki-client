@@ -13,8 +13,36 @@ class DeckSummary extends React.Component {
         this.onCardMouseOver = this.onCardMouseOver.bind(this);
 
         this.state = {
-            cardToShow: ''
+            cardToShow: null,
+            hoverTarget: null,
+            top: null,
+            left: null
         };
+
+        this.cardHoverRef = React.createRef();
+    }
+
+    componentDidUpdate() {
+        if(this.state.hoverTarget && this.state.top === null) {
+            this.setState(state => {
+                let hoverElement = this.cardHoverRef.current;
+                let width = window.innerWidth;
+                let hoverDimensions = hoverElement.getBoundingClientRect();
+                let targetDimensions = state.hoverTarget.getBoundingClientRect();
+
+                let left = 0;
+
+                if(width - targetDimensions.left >= hoverDimensions.width) {
+                    left = targetDimensions.left - hoverDimensions.width - 10;
+                } else {
+                    left = targetDimensions.left + targetDimensions.width + 10;
+                }
+
+                let top = targetDimensions.top + targetDimensions.height / 2 - hoverDimensions.height / 2;
+
+                return { left: left, top: top };
+            });
+        }
     }
 
     hasTrait(card, trait) {
@@ -26,11 +54,11 @@ class DeckSummary extends React.Component {
             return event.target.innerText === card.label;
         });
 
-        this.setState({ cardToShow: cardToDisplay[0] });
+        this.setState({ cardToShow: cardToDisplay[0], hoverTarget: event.target });
     }
 
     onCardMouseOut() {
-        this.setState({ cardToShow: undefined });
+        this.setState({ cardToShow: null, hoverTarget: null, top: null, left: null });
     }
 
     getBannersToRender() {
@@ -114,7 +142,7 @@ class DeckSummary extends React.Component {
         return (
             <div className='deck-summary col-xs-12'>
                 { this.state.cardToShow ?
-                    <div className={ classNames('hover-card', { 'horizontal': this.state.cardToShow.type === 'plot'}) }>
+                    <div ref={ this.cardHoverRef } className={ classNames('hover-card', { 'horizontal': this.state.cardToShow.type === 'plot'}) } style={ { top: this.state.top, left: this.state.left } }>
                         <img className='hover-image' src={ '/img/cards/' + this.state.cardToShow.code + '.png' } />
                         <AltCard card={ this.state.cardToShow } />
                     </div> : null }
