@@ -527,6 +527,7 @@ span.down-arrow {
 }
 
 .player-board {
+  border: 1px dotted white;
   margin: 10px;
 
   &.our-side {
@@ -818,4 +819,16 @@ hr.phasestart {
     height: 24px;
     border-radius: 15px;
   }
+}
+
+.faction-and-agenda, .draw-and-discard {
+  display: flex;
+}
+
+.hand {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  bottom: -@card-height * 0.7;
+  justify-content: center;
 }
