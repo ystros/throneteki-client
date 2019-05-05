@@ -829,6 +829,24 @@ hr.phasestart {
   display: flex;
   position: absolute;
   width: 100%;
-  bottom: -@card-height * 0.7;
+  bottom: -@card-height * 0.6;
   justify-content: center;
+  align-items: flex-end;
+  transition: 0.3s;
+}
+
+.hand:hover {
+  bottom: 0;
+}
+
+.hand .card,
+.hand .card .card-image {
+  transition: 0.5s;
+}
+
+.hand .card:hover,
+.hand .card:hover .card-image {
+  width: @card-width * 2 !important;
+  height: @card-height * 2 !important;
+  transition: 0.5s;
 }

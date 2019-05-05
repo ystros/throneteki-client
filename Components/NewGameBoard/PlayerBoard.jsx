@@ -144,9 +144,9 @@ class PlayerBoard extends React.Component {
             { ...cardPileProps } />);
 
         return [
+            deadPile,
             drawDeck,
-            discardPile,
-            deadPile
+            discardPile
         ];
     }
 
@@ -160,13 +160,14 @@ class PlayerBoard extends React.Component {
         return (
             <div className={ className } >
                 <div className='faction-and-agenda'>
+
+                </div>
+                <div className='draw-and-discard'>
                     <CardPile className='faction' source='faction' cards={ [] } topCard={ this.props.faction }
                         onMouseOver={ this.props.onMouseOver } onMouseOut={ this.props.onMouseOut } disablePopup
                         onCardClick={ this.props.onCardClick }
                         size={ this.props.user.settings.cardSize } />
                     { this.getAgenda() }
-                </div>
-                <div className='draw-and-discard'>
                     { this.renderDrawAndDiscard() }
                 </div>
                 <PlayerHand

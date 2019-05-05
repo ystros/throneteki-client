@@ -335,6 +335,7 @@ export class GameBoard extends React.Component {
                     <div className='play-area'>
                         <PlayerBoard
                             cardsInPlay={ otherPlayer.cardPiles.cardsInPlay }
+                            cardSize={ this.props.user.settings.cardSize }
                             hand={ otherPlayer.cardPiles.hand }
                             onCardClick={ this.onCardClick }
                             onMenuItemClick={ this.onMenuItemClick }
@@ -346,6 +347,37 @@ export class GameBoard extends React.Component {
                             <PlayerBoard
                                 agenda={ thisPlayer.agenda }
                                 cardsInPlay={ thisPlayer.cardPiles.cardsInPlay }
+                                cardSize={ this.props.user.settings.cardSize }
+                                deadPile={ thisPlayer.cardPiles.deadPile }
+                                discardPile={ thisPlayer.cardPiles.discardPile }
+                                drawDeck={ thisPlayer.cardPiles.drawDeck }
+                                faction={ thisPlayer.faction }
+                                hand={ thisPlayer.cardPiles.hand }
+                                numDrawCards={ thisPlayer.numDrawCards }
+                                onCardClick={ this.onCardClick }
+                                onMenuItemClick={ this.onMenuItemClick }
+                                onMouseOut={ this.onMouseOut }
+                                onMouseOver={ this.onMouseOver }
+                                rowDirection='default'
+                                user={ this.props.user } />
+                        </Droppable>
+                    </div>
+                    <div className='play-area'>
+                        <PlayerBoard
+                            cardsInPlay={ otherPlayer.cardPiles.cardsInPlay }
+                            cardSize={ this.props.user.settings.cardSize }
+                            hand={ otherPlayer.cardPiles.hand }
+                            onCardClick={ this.onCardClick }
+                            onMenuItemClick={ this.onMenuItemClick }
+                            onMouseOut={ this.onMouseOut }
+                            onMouseOver={ this.onMouseOver }
+                            rowDirection='reverse'
+                            user={ this.props.user } />
+                        <Droppable onDragDrop={ this.onDragDrop } source='play area'>
+                            <PlayerBoard
+                                agenda={ thisPlayer.agenda }
+                                cardsInPlay={ thisPlayer.cardPiles.cardsInPlay }
+                                cardSize={ this.props.user.settings.cardSize }
                                 deadPile={ thisPlayer.cardPiles.deadPile }
                                 discardPile={ thisPlayer.cardPiles.discardPile }
                                 drawDeck={ thisPlayer.cardPiles.drawDeck }
