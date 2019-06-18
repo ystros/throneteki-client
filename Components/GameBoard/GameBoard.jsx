@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import PlayerStats from './PlayerStats';
 import PlayerRow from './PlayerRow';
 import ActivePlayerPrompt from './ActivePlayerPrompt';
+import Card from './Card';
 import CardZoom from './CardZoom';
 import PlayerBoard from './PlayerBoard';
 import GameChat from './GameChat';
@@ -407,7 +408,295 @@ export class GameBoard extends React.Component {
         ];
     }
 
+    renderP({ className }) {
+        return (
+            <div className={`new-player-board ${className}`}>
+                <div className='new-card-row'>
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '14001',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            menu: [],
+                            name: 'Robert Baratheon',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '14001',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: true,
+                            menu: [],
+                            name: 'Robert Baratheon',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                </div>
+                <div className='new-card-row'>
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '01040',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: false,
+                            menu: [],
+                            name: 'The Roseroad',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '01040',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: false,
+                            menu: [],
+                            name: 'The Roseroad',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '01040',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: false,
+                            menu: [],
+                            name: 'The Roseroad',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                </div>
+                <div className='new-card-row'>
+                    <div className='new-left'>
+                        <div className='new-plots'>
+                            <Card
+                                card={ {
+                                    attachments: [],
+                                    baseStrength: 3,
+                                    childCards: [],
+                                    code: '01001',
+                                    dupes: [],
+                                    factionStatus: [],
+                                    iconsAdded: [],
+                                    iconsRemoved: [],
+                                    kneeled: false,
+                                    menu: [],
+                                    name: 'The Roseroad',
+                                    power: 0,
+                                    strength: 3,
+                                    tokens: {},
+                                    type: 'plot'
+                                } }
+                            />
+                            <Card
+                                card={ {
+                                    attachments: [],
+                                    baseStrength: 3,
+                                    childCards: [],
+                                    code: '01001',
+                                    dupes: [],
+                                    factionStatus: [],
+                                    facedown: true,
+                                    iconsAdded: [],
+                                    iconsRemoved: [],
+                                    kneeled: false,
+                                    menu: [],
+                                    name: 'The Roseroad',
+                                    power: 0,
+                                    strength: 3,
+                                    tokens: {},
+                                    type: 'plot'
+                                } }
+                            />
+                        </div>
+                        <Card
+                            card={ {
+                                attachments: [],
+                                baseStrength: 3,
+                                childCards: [],
+                                code: 'baratheon',
+                                dupes: [],
+                                factionStatus: [],
+                                iconsAdded: [],
+                                iconsRemoved: [],
+                                kneeled: false,
+                                menu: [],
+                                name: 'The Roseroad',
+                                power: 0,
+                                strength: 3,
+                                tokens: {},
+                                type: 'faction'
+                            } }
+                        />
+                        <Card
+                            card={ {
+                                attachments: [],
+                                baseStrength: 3,
+                                childCards: [],
+                                code: '14045',
+                                dupes: [],
+                                factionStatus: [],
+                                iconsAdded: [],
+                                iconsRemoved: [],
+                                kneeled: false,
+                                menu: [],
+                                name: 'The Roseroad',
+                                power: 0,
+                                strength: 3,
+                                tokens: {},
+                                type: 'agenda'
+                            } }
+                        />
+                    </div>
+                    <div className='new-middle'>
+                        <div className='new-shadows'>
+                            <Card
+                                card={ {
+                                    attachments: [],
+                                    baseStrength: 3,
+                                    childCards: [],
+                                    code: '14045',
+                                    dupes: [],
+                                    factionStatus: [],
+                                    facedown: true,
+                                    iconsAdded: [],
+                                    iconsRemoved: [],
+                                    kneeled: false,
+                                    menu: [],
+                                    name: 'The Roseroad',
+                                    power: 0,
+                                    strength: 3,
+                                    tokens: {},
+                                    type: 'agenda'
+                                } }
+                                source='shadows'
+                            />
+                        </div>
+                    </div>
+                    <div className='new-right'>
+                        <Card
+                            card={ {
+                                attachments: [],
+                                baseStrength: 3,
+                                childCards: [],
+                                code: '14045',
+                                dupes: [],
+                                factionStatus: [],
+                                facedown: true,
+                                iconsAdded: [],
+                                iconsRemoved: [],
+                                kneeled: false,
+                                menu: [],
+                                name: 'The Roseroad',
+                                power: 0,
+                                strength: 3,
+                                tokens: {},
+                                type: 'agenda'
+                            } }
+                        />
+                        <Card
+                            card={ {
+                                attachments: [],
+                                baseStrength: 3,
+                                childCards: [],
+                                code: '10040',
+                                dupes: [],
+                                factionStatus: [],
+                                facedown: false,
+                                iconsAdded: [],
+                                iconsRemoved: [],
+                                kneeled: false,
+                                menu: [],
+                                name: 'The Roseroad',
+                                power: 0,
+                                strength: 3,
+                                tokens: {},
+                                type: 'agenda'
+                            } }
+                        />
+                        <Card
+                            card={ {
+                                attachments: [],
+                                baseStrength: 3,
+                                childCards: [],
+                                code: '10040',
+                                dupes: [],
+                                factionStatus: [],
+                                facedown: false,
+                                iconsAdded: [],
+                                iconsRemoved: [],
+                                kneeled: true,
+                                menu: [],
+                                name: 'The Roseroad',
+                                power: 0,
+                                strength: 3,
+                                tokens: {},
+                                type: 'agenda'
+                            } }
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     render() {
+        return (
+            <div className='game-board'>
+                {/* <div className='new-player-board'>
+                    <div className='new-card-row'></div>
+                    <div className='new-card-row'></div>
+                    <div className='new-card-row'></div>
+                </div> */}
+                { this.renderP({ className: 'top' }) }
+                { this.renderP({ className: 'bottom' }) }
+            </div>
+        );
+
         if(!this.props.currentGame || !this.props.cards || !this.props.currentGame.started) {
             return <div>Waiting for server...</div>;
         }

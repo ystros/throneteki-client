@@ -25,7 +25,7 @@ import MotdAdmin from './pages/MotdAdmin';
 import Privacy from './pages/Privacy';
 
 const routes = [
-    { path: '/', action: () => <Lobby key='lobby' /> },
+    { path: '/', action: () => <GameBoard key='lobby' /> },
     { path: '/about', action: () => <About key='about' /> },
     { path: '/activation', action: context => <Activation key='activation' id={ context.params.id } token={ context.params.token } /> },
     { path: '/blocklist', action: () => <BlockList key='blocklist' /> },

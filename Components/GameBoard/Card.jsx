@@ -349,6 +349,16 @@ class InnerCard extends React.Component {
     }
 
     render() {
+        return (
+            <div className={ classNames('new-card-spacer', { kneeled: this.props.card.kneeled, horizontal: this.props.card.type === 'plot'}) }>
+                <div
+                    className={ classNames('new-card', { kneeled: this.props.card.kneeled, horizontal: this.props.card.type === 'plot' }) }
+                    style={ { backgroundImage: `url(${this.imageUrl})` } }>
+                    {/* <img src={ this.imageUrl } /> */}
+                </div>
+            </div>
+        );
+
         if(this.props.wrapped) {
             return (
                 <div className='card-wrapper' style={ this.props.style }>

@@ -2,6 +2,7 @@ import React from 'react';
 
 import Link from '../Components/Site/Link';
 import Panel from '../Components/Site/Panel';
+import Card from '../Components/GameBoard/Card';
 
 class HowToPlay extends React.Component {
     render() {
