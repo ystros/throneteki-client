@@ -111,11 +111,11 @@ class InnerCard extends React.Component {
         // Only display psuedo-tokens for face up cards in play
         if(!card.facedown && this.props.source === 'play area') {
             if(card.type === 'character' && card.baseStrength !== card.strength) {
-                counters.push({ name: 'strength', count: card.strength, shortName: 'S' });
+                counters.push({ name: 'strength-token', count: card.strength, shortName: 'S' });
             }
 
             if(card.dupes && card.dupes.length > 0) {
-                counters.push({ name: 'dupe', count: card.dupes.length, shortName: 'D' });
+                counters.push({ name: 'dupe-token', count: card.dupes.length, shortName: 'D' });
             }
 
             for(const icon of card.iconsAdded || []) {
