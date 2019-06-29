@@ -680,32 +680,89 @@ export class GameBoard extends React.Component {
                         />
                     </div>
                 </div>
+                <div className='new-hand'>
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '13041',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: false,
+                            menu: [],
+                            name: '',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '13042',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: false,
+                            menu: [],
+                            name: '',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '13043',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: false,
+                            menu: [],
+                            name: '',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                    <Card
+                        card={ {
+                            attachments: [],
+                            baseStrength: 3,
+                            childCards: [],
+                            code: '13044',
+                            dupes: [],
+                            factionStatus: [],
+                            iconsAdded: [],
+                            iconsRemoved: [],
+                            kneeled: false,
+                            menu: [],
+                            name: '',
+                            power: 0,
+                            strength: 3,
+                            tokens: {},
+                            type: 'character'
+                        } }
+                    />
+                </div>
             </div>
         );
     }
 
     render() {
-        return (
-            <div className='game-board'>
-                {/* <div className='new-player-board'>
-                    <div className='new-card-row'></div>
-                    <div className='new-card-row'></div>
-                    <div className='new-card-row'></div>
-                </div> */}
-                { this.renderP({ className: 'top' }) }
-                { this.renderP({ className: 'bottom' }) }
-            </div>
-        );
-
-        if(!this.props.currentGame || !this.props.cards || !this.props.currentGame.started) {
-            return <div>Waiting for server...</div>;
-        }
-
-        if(!this.props.user) {
-            this.props.navigate('/');
-            return <div>You are not logged in, redirecting...</div>;
-        }
-
         let thisPlayer = this.props.currentGame.players[this.props.user.username];
         if(!thisPlayer) {
             thisPlayer = Object.values(this.props.currentGame.players)[0];
@@ -728,6 +785,37 @@ export class GameBoard extends React.Component {
         let boardClass = classNames('game-board', {
             'select-cursor': thisPlayer && thisPlayer.selectCard
         });
+
+        return (
+            <div className={ boardClass }>
+                <div className='main-window'>
+                    <div className='game-board-cards'>
+                        { this.renderP({ className: 'top' }) }
+                        { this.renderP({ className: 'bottom' }) }
+                    </div>
+                    { this.state.showMessages && (
+                        <div className='right-side'>
+                            <div className='gamechat'>
+                                <GameChat key='gamechat'
+                                    messages={ this.props.currentGame.messages }
+                                    onCardMouseOut={ this.onMouseOut }
+                                    onCardMouseOver={ this.onMouseOver }
+                                    onSendChat={ this.sendChatMessage } />
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        );
+
+        if(!this.props.currentGame || !this.props.cards || !this.props.currentGame.started) {
+            return <div>Waiting for server...</div>;
+        }
+
+        if(!this.props.user) {
+            this.props.navigate('/');
+            return <div>You are not logged in, redirecting...</div>;
+        }
 
         return (
             <div className={ boardClass }>

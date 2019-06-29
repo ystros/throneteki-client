@@ -730,14 +730,17 @@
 }
 
 .new-player-board {
+  position: relative;
   border: 1px dotted white;
   flex: 1;
   display: flex;
   flex-direction: column;
   padding: 0 @card-radius*4;
+  overflow: hidden;
 
   &.top {
-    transform: rotate(180deg);
+    // transform: rotate(180deg);
+    flex-direction: column-reverse;
   }
 }
 
@@ -813,4 +816,18 @@
   flex-direction: column;
   overflow: hidden;
   max-height: @card-height;
+}
+
+.new-hand {
+  position: absolute;
+  bottom: -@card-height * 0.7;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    bottom: 0;
+    padding: @card-height / 5;
+  }
 }
