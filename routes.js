@@ -18,7 +18,7 @@ import NewsAdmin from './pages/NewsAdmin';
 import AddDeck from './Components/Decks/AddDeck';
 import EditDeck from './Components/Decks/EditDeck';
 import GameLobby from './Components/Games/GameLobby';
-import GameBoard from './Components/GameBoard/GameBoard';
+import {GameBoard} from './Components/GameBoardNext';
 import BlockList from './pages/BlockList';
 import NodesAdmin from './pages/NodesAdmin';
 import MotdAdmin from './pages/MotdAdmin';
