@@ -15,6 +15,7 @@ import GameChat from './GameChat';
 import PlayerPlots from './PlayerPlots';
 import RookerySetup from './RookerySetup';
 import GameConfigurationModal from './GameConfigurationModal';
+import ReportAbuseModal from './ReportAbuseModal';
 import Droppable from './Droppable';
 import * as actions from '../../actions';
 
@@ -122,6 +123,7 @@ export class GameBoard extends React.Component {
             );
 
             menuOptions.unshift({ text: 'Spectators: ' + props.currentGame.spectators.length, popup: spectatorPopup });
+            menuOptions.unshift({ text: 'Report Abuse', onClick: this.handleReportAbuseClick });
 
             this.setContextMenu(menuOptions);
         } else {
@@ -133,6 +135,10 @@ export class GameBoard extends React.Component {
         if(this.props.setContextMenu) {
             this.props.setContextMenu(menu);
         }
+    }
+
+    handleReportAbuseClick() {
+        $('#abuse-modal').modal('show');
     }
 
     onConcedeClick() {
@@ -442,8 +448,13 @@ export class GameBoard extends React.Component {
             'select-cursor': thisPlayer && thisPlayer.selectCard
         });
 
+        const playerNames = Object.values(this.props.currentGame.players).map(player => player.name);
+        const spectatorNames = Object.values(this.props.currentGame.spectators).map(spectator => spectator.name);
+        const users = playerNames.concat(spectatorNames); //.filter(name => name !== this.props.user.username);
+
         return (
             <div className={ boardClass }>
+                <ReportAbuseModal { ...{ id: 'abuse-modal', users, gameId: this.props.currentGame.id, sendGameMessage: this.props.sendGameMessage } } />
                 <GameConfigurationModal
                     id='settings-modal'
                     keywordSettings={ thisPlayer.keywordSettings }
